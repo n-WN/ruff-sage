@@ -40,6 +40,8 @@ ruff_source_file = { path = "crates/ruff_source_file" }
 ruff_text_size = { path = "crates/ruff_text_size" }
 ruff_workspace = { path = "crates/ruff_workspace" }
 
+ruff_sage_lsp = { path = "crates/ruff_sage_lsp" }
+
 ty = { path = "crates/ty" }
 ty_combine = { path = "crates/ty_combine" }
 ty_ide = { path = "crates/ty_ide" }

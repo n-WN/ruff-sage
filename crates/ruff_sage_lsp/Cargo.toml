@@ -1,0 +1,68 @@
+[package]
+name = "ruff_sage_lsp"
+version = "0.1.0"
+publish = false
+authors = { workspace = true }
+edition = { workspace = true }
+rust-version = { workspace = true }
+homepage = { workspace = true }
+documentation = { workspace = true }
+repository = { workspace = true }
+license = { workspace = true }
+
+[lib]
+
+[[bin]]
+name = "ruff-sage-lsp"
+path = "src/bin/ruff-sage-lsp.rs"
+
+[dependencies]
+# Ruff core dependencies
+ruff_db = { workspace = true }
+ruff_diagnostics = { workspace = true }
+ruff_formatter = { workspace = true }
+ruff_linter = { workspace = true }
+ruff_notebook = { workspace = true }
+ruff_python_ast = { workspace = true }
+ruff_python_codegen = { workspace = true }
+ruff_python_formatter = { workspace = true }
+ruff_python_index = { workspace = true }
+ruff_python_parser = { workspace = true }
+ruff_source_file = { workspace = true }
+ruff_text_size = { workspace = true }
+ruff_workspace = { workspace = true }
+
+# LSP dependencies
+lsp-server = { workspace = true }
+lsp-types = { workspace = true }
+
+# Standard library replacements and utilities
+anyhow = { workspace = true }
+clap = { workspace = true }
+crossbeam = { workspace = true }
+ignore = { workspace = true }
+jod-thread = { workspace = true }
+regex = { workspace = true }
+rustc-hash = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+shellexpand = { workspace = true }
+thiserror = { workspace = true }
+toml = { workspace = true }
+tokio = { version = "1.0", features = ["sync", "rt", "macros"] }
+tracing = { workspace = true }
+tracing-log = { workspace = true }
+tracing-subscriber = { workspace = true, features = ["chrono"] }
+
+[dev-dependencies]
+insta = { workspace = true }
+tempfile = { workspace = true }
+
+[dependencies.tempfile]
+workspace = true
+
+[target.'cfg(target_vendor = "apple")'.dependencies]
+libc = { workspace = true }
+
+[lints]
+workspace = true
