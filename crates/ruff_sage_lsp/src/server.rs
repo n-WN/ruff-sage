@@ -428,8 +428,7 @@ impl Server {
     fn handle_goto_definition_request(&mut self, req_id: RequestId, _params: Value) -> anyhow::Result<()> {
         // For now, return empty result
         let response = Response::new_ok(req_id, Option::<lsp_types::GotoDefinitionResponse>::None);
-        self.connection.sender.send(Message::Response(response))?;
+        sender.send(Message::Response(response))?;
         Ok(())
     }
-}}
 }

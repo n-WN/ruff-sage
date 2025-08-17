@@ -47,13 +47,13 @@ use std::num::NonZeroUsize;
 
 use anyhow::Context as _;
 pub use preprocess::{PreprocessError, PreprocessResult, SagePreprocessor};
-pub use server::{ConnectionSender, MainLoopSender, Server};
+pub use simple_server::{ConnectionSender, MainLoopSender, Server};
 pub use session::{Client, ClientOptions, DocumentQuery, DocumentSnapshot, GlobalOptions, Session};
 pub use source_map::{Position, Range, SourceMap};
 pub use advanced_source_map::{AdvancedSourceMap};
 pub use incremental_completion::{CompletionItem, CompletionKind, IncrementalCompletionHandler};
 
-use crate::server::ConnectionInitializer;
+use crate::simple_server::ConnectionInitializer;
 
 mod preprocess;
 mod source_map;
@@ -61,7 +61,7 @@ mod advanced_source_map;
 mod incremental_completion;
 mod realtime_analyzer;
 mod document_manager;
-mod server;
+mod simple_server;
 mod session;
 
 pub(crate) const SERVER_NAME: &str = "ruff-sage";

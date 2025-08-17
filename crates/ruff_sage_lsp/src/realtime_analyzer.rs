@@ -73,7 +73,7 @@ pub struct Variable {
 }
 
 /// Scope for variable tracking
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Default)]
 pub struct Scope {
     pub variables: HashMap<String, Variable>,
     pub parent: Option<Arc<Scope>>,
@@ -164,7 +164,7 @@ pub enum SageAstNode {
 }
 
 /// Real-time syntax analyzer for SageMath
-#[derive(Debug, Default)]
+#[derive(Debug)]
 pub struct RealtimeAnalyzer {
     /// Current source code
     source: String,
@@ -487,7 +487,9 @@ impl RealtimeAnalyzer {
     fn infer_types(&mut self) {
         self.type_context.clear();
         
-        for node in &self.ast {
+        // Clone the AST to avoid borrowing issues
+        let ast_nodes = self.ast.clone();
+        for node in &ast_nodes {
             self.infer_node_type(node);
         }
     }
@@ -589,7 +591,9 @@ impl RealtimeAnalyzer {
     /// Perform semantic analysis
     fn semantic_analysis(&mut self) {
         // Check for undefined variables, type mismatches, etc.
-        for node in &self.ast {
+        // Clone the AST to avoid borrowing issues
+        let ast_nodes = self.ast.clone();
+        for node in &ast_nodes {
             self.check_semantics(node);
         }
     }
