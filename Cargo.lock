@@ -3276,6 +3276,45 @@ dependencies = [
 ]
 
 [[package]]
+name = "ruff_sage_lsp"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "crossbeam",
+ "ignore",
+ "insta",
+ "jod-thread",
+ "libc",
+ "lsp-server",
+ "lsp-types",
+ "regex",
+ "ruff_db",
+ "ruff_diagnostics",
+ "ruff_formatter",
+ "ruff_linter",
+ "ruff_notebook",
+ "ruff_python_ast",
+ "ruff_python_codegen",
+ "ruff_python_formatter",
+ "ruff_python_index",
+ "ruff_python_parser",
+ "ruff_source_file",
+ "ruff_text_size",
+ "ruff_workspace",
+ "rustc-hash",
+ "serde",
+ "serde_json",
+ "shellexpand",
+ "tempfile",
+ "thiserror 2.0.12",
+ "toml 0.9.5",
+ "tracing",
+ "tracing-log",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "ruff_server"
 version = "0.2.2"
 dependencies = [
