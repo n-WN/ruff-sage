@@ -19,9 +19,28 @@
 //! ## Key Components
 //!
 //! - [`preprocess`]: SageMath preprocessing and Python conversion
-//! - [`source_map`]: Bidirectional mapping between .sage and .py coordinates  
+//! - [`source_map`]: Basic bidirectional mapping between .sage and .py coordinates  
+//! - [`advanced_source_map`]: Sophisticated mapping with incremental support and autocompletion
+//! - [`incremental_completion`]: Real-time completion for SageMath syntax patterns
 //! - [`server`]: LSP server implementation with SageMath-specific handlers
 //! - [`session`]: Session management for .sage documents
+//!
+//! ## Advanced Features
+//!
+//! The [`advanced_source_map`] module provides sophisticated mapping capabilities that address
+//! the limitations of basic preprocessing:
+//!
+//! - **Incremental Transformations**: Support for real-time autocompletion scenarios
+//! - **Complex Syntax Handling**: Polynomial ring declarations, matrix operations, etc.
+//! - **Bidirectional Mapping**: Precise coordinate translation for LSP features
+//! - **Syntax Completion**: Intelligent suggestions for partial SageMath constructs
+//!
+//! The [`incremental_completion`] module specifically addresses the autocompletion challenges:
+//!
+//! - **Real-time Completion**: `*` → `**` autocompletion for power operators
+//! - **Polynomial Ring Support**: `P.<x> = Pol` → `PolynomialRing(QQ)` completion
+//! - **Context-aware Suggestions**: Function signatures, variable declarations
+//! - **Pattern Recognition**: Intelligent completion based on SageMath syntax patterns
 
 use std::num::NonZeroUsize;
 
@@ -30,11 +49,15 @@ pub use preprocess::{PreprocessError, PreprocessResult, SagePreprocessor};
 pub use server::{ConnectionSender, MainLoopSender, Server};
 pub use session::{Client, ClientOptions, DocumentQuery, DocumentSnapshot, GlobalOptions, Session};
 pub use source_map::{Position, Range, SourceMap};
+pub use advanced_source_map::{AdvancedSourceMap};
+pub use incremental_completion::{CompletionItem, CompletionKind, IncrementalCompletionHandler};
 
 use crate::server::ConnectionInitializer;
 
 mod preprocess;
 mod source_map;
+mod advanced_source_map;
+mod incremental_completion;
 mod server;
 mod session;
 
