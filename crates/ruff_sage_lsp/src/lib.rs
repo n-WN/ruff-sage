@@ -25,22 +25,23 @@
 //! - [`server`]: LSP server implementation with SageMath-specific handlers
 //! - [`session`]: Session management for .sage documents
 //!
-//! ## Advanced Features
+//! ## Real-time Analysis Features
 //!
-//! The [`advanced_source_map`] module provides sophisticated mapping capabilities that address
-//! the limitations of basic preprocessing:
+//! The [`realtime_analyzer`] module provides the core real-time syntax analysis and type 
+//! inference capabilities that make the LSP server truly interactive:
 //!
-//! - **Incremental Transformations**: Support for real-time autocompletion scenarios
-//! - **Complex Syntax Handling**: Polynomial ring declarations, matrix operations, etc.
-//! - **Bidirectional Mapping**: Precise coordinate translation for LSP features
-//! - **Syntax Completion**: Intelligent suggestions for partial SageMath constructs
+//! - **Incremental Parsing**: Parse SageMath syntax as the user types without external preprocessing
+//! - **Type Inference**: Understand SageMath types (polynomial rings, matrices, etc.) for intelligent suggestions
+//! - **Semantic Analysis**: Real-time error detection and context-aware autocompletion
+//! - **SageMath Syntax Support**: Native parsing of `^` operators, polynomial rings, and SageMath functions
 //!
-//! The [`incremental_completion`] module specifically addresses the autocompletion challenges:
+//! ## Legacy Features (Deprecated)
 //!
-//! - **Real-time Completion**: `*` → `**` autocompletion for power operators
-//! - **Polynomial Ring Support**: `P.<x> = Pol` → `PolynomialRing(QQ)` completion
-//! - **Context-aware Suggestions**: Function signatures, variable declarations
-//! - **Pattern Recognition**: Intelligent completion based on SageMath syntax patterns
+//! The [`advanced_source_map`] and [`incremental_completion`] modules provide legacy functionality
+//! that has been superseded by the real-time analyzer:
+//!
+//! - **Basic Mapping**: Simple bidirectional coordinate mapping (use realtime_analyzer instead)
+//! - **Pattern-based Completion**: Basic autocompletion patterns (use realtime_analyzer instead)
 
 use std::num::NonZeroUsize;
 
@@ -58,6 +59,8 @@ mod preprocess;
 mod source_map;
 mod advanced_source_map;
 mod incremental_completion;
+mod realtime_analyzer;
+mod document_manager;
 mod server;
 mod session;
 
